@@ -4,7 +4,7 @@ import { auth } from "./firebase-config.js";
 
 // 🔗 Backend URL — update this after deploying the backend (Render/Vercel).
 // For local testing, point this at your local server, e.g. "http://localhost:5000"
-const BACKEND_URL = "https://parkiq-backend.onrender.com";
+const BACKEND_URL = "https://parkiq-backend-pca0.onrender.com";
 
 // 🔥 LOAD DATA
 window.addEventListener("DOMContentLoaded", () => {
