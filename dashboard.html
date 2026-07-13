@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | ParkIQ</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+<!-- 🔥 HEADER -->
+<header class="header">
+  <h2>ParkIQ</h2>
+
+  <!-- PROFILE -->
+  <div class="profile-wrapper">
+    <div class="profile-btn" id="profileBtn">P</div>
+
+    <!-- DROPDOWN -->
+    <div class="dropdown-menu" id="dropdownMenu">
+
+      <div class="user-info">
+        <h4 id="menuName">User</h4>
+        <p id="menuEmail">email</p>
+      </div>
+
+      <hr>
+
+      <p onclick="goDashboard()">🏠 Dashboard</p>
+      <p onclick="findCar()">🚗 Find My Car</p>
+      <p onclick="goSettings()">⚙️ Settings</p>
+      <p onclick="logout()">🚪 Logout</p>
+
+    </div>
+  </div>
+
+</header>
+
+<!-- 🔥 SEARCH -->
+<input id="searchBox" placeholder="Search city or area..." />
+
+<!-- 🔥 MAIN -->
+<div class="container">
+
+  <!-- MAP -->
+  <div id="map"></div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div id="parkingDetails">
+      <h3>Select parking</h3>
+      <p>Click marker to see details</p>
+    </div>
+
+    <!-- 🔥 BOOKING FORM -->
+    <div id="bookingForm" class="hidden">
+
+      <label>Owner Name</label>
+      <input id="ownerName" placeholder="Enter name">
+
+      <label>Car Number</label>
+      <input id="carNumber" placeholder="UP81XXXX">
+
+      <label>Date</label>
+      <input type="date" id="bookingDate">
+
+      <label>Time</label>
+      <div class="time-row">
+        <input type="time" id="startTime">
+        <input type="time" id="endTime">
+      </div>
+
+      <p id="priceBox"></p>
+
+      <button id="confirmBookingBtn">Continue to Payment</button>
+
+      <p id="statusBox"></p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- JS -->
+<script src="js/dashboard.js"></script>
+
+<script async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGRdCqogmnvzerW4wzaWQNBQG79mtG0FY&libraries=places&callback=initMap">
+</script>
+
+<script type="module" src="js/map.js"></script>
+
+
+</body>
+</html>

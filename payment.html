@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment | ParkIQ</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- CSS FILE -->
+  <link rel="stylesheet" href="css/payment.css">
+
+  <!-- RAZORPAY -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+</head>
+
+<body>
+
+  <div class="payment-container">
+
+    <h2>Complete Payment 💳</h2>
+
+    <div class="summary-card">
+
+      <p><strong>📍 Location:</strong> <span id="loc"></span></p>
+      <p><strong>🕒 Time:</strong> <span id="time"></span></p>
+      <p><strong>🚗 Car:</strong> <span id="car"></span></p>
+      <p><strong>📅 Date:</strong> <span id="date"></span></p>
+
+      <hr>
+
+      <h3>Total: ₹<span id="amount"></span></h3>
+
+    </div>
+
+    <button id="payBtn">Pay Securely 🔒</button>
+  
+
+    <p id="status"></p>
+
+  </div>
+
+  <!-- JS FILE (VERY IMPORTANT) -->
+  <script type="module" src="js/payment.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 🔥 USERS — a user can only read/write their own profile document
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // 🔥 BOOKINGS — a user can only read their own bookings.
+    // Writes are NOT allowed from the client at all anymore: bookings are
+    // created exclusively by the backend (using the Firebase Admin SDK,
+    // which bypasses these rules) after a payment has been verified.
+    // This prevents a client from writing a fake "paid" booking directly.
+    match /bookings/{bookingId} {
+      allow read: if request.auth != null && request.auth.uid == resource.data.userId;
+      allow write: if false;
+    }
+
+    // 🔥 PARKING SLOTS — public read (needed to show availability on the
+    // map before login-gated actions), writes restricted to admins only.
+    // NOTE: replace this with a proper admin-role check once an admin
+    // panel/custom claims are added (Phase 3).
+    match /parkingSlots/{slotId} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}

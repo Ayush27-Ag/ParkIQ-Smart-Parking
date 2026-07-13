@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking Confirmed | ParkIQ</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/confirmation.css">
+</head>
+
+<body>
+
+<!-- 🔥 HEADER -->
+<header class="header">
+  <h2>ParkIQ</h2>
+
+  <!-- PROFILE -->
+  <div class="profile-wrapper">
+  <div class="profile-btn" id="profileBtn">P</div>
+
+  <div class="dropdown-menu" id="dropdownMenu">
+
+    <div class="user-info">
+      <h4 id="menuName">User</h4>
+      <p id="menuEmail">email</p>
+    </div>
+
+    <hr style="border-color:#334155;">
+
+    <p onclick="goDashboard()">🏠 Dashboard</p>
+    <p onclick="findCar()">🚗 Find My Car</p>
+    <p onclick="logout()">🚪 Logout</p>
+    <p onclick="openActiveBooking()">🎯 Active Booking</p>
+
+  </div>
+</div>
+
+</header>
+
+
+<!-- 🔥 SUCCESS POPUP -->
+<div id="successPopup" class="popup">
+  <div class="popup-card">
+
+    <h2>✅ Booking Confirmed</h2>
+
+    <p>📍 <span id="popLoc"></span></p>
+    <p>🕒 <span id="popTime"></span></p>
+    <p>🚗 <span id="popCar"></span></p>
+    <p>📅 <span id="popDate"></span></p>
+
+    <hr>
+
+    <h3>🎫 Token: <span id="popToken"></span></h3>
+
+  </div>
+</div>
+
+
+<!-- 🔥 MAIN CONTENT -->
+<div class="main">
+
+  <h2 class="welcome">👋 Welcome Back</h2>
+
+  <!-- ACTIVE BOOKING -->
+  <div class="card">
+
+    <h3>Your Active Booking</h3>
+
+    <p id="homeLoc"></p>
+    <p id="homeTime"></p>
+    <p id="homeCar"></p>
+    <p id="homeDate"></p>
+
+    <!-- 🔥 TOKEN FIX (IMPORTANT) -->
+    <p class="token" id="homeToken"></p>
+
+  </div>
+
+  <!-- 🔥 ACTION BUTTONS -->
+  <div class="actions">
+
+    <button onclick="goDashboard()">📍 Find Parking</button>
+    <button onclick="findCar()">🚗 Find My Car</button>
+    <button onclick="goBookings()">📜 My Bookings</button>
+
+  </div>
+
+</div>
+
+
+<!-- JS -->
+<script type="module" src="js/confirmation.js"></script>
+
+</body>
+</html>

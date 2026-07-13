@@ -1,0 +1,205 @@
+body{
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  background:#020617;
+  color:white;
+}
+
+/* 🔥 HEADER */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 24px;
+  background:#0f172a;
+  box-shadow:0 4px 20px rgba(0,0,0,0.3);
+}
+
+.header h2{
+  margin:0;
+  font-weight:600;
+}
+
+/* 🔥 MAIN */
+.main{
+  padding:30px 20px;
+  max-width:900px;
+  margin:auto;
+}
+
+.welcome{
+  margin-bottom:10px;
+}
+
+/* 🔥 CARD */
+.card{
+  background:#1e293b;
+  padding:20px;
+  border-radius:16px;
+  margin-top:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+}
+
+/* TEXT SPACING */
+.card p{
+  margin:6px 0;
+}
+
+/* 🔥 TOKEN */
+#homeToken{
+  margin-top:12px;
+  font-weight:600;
+  color:#facc15;
+  font-size:15px;
+}
+
+/* 🔥 ACTION BUTTONS */
+.actions{
+  display:flex;
+  gap:12px;
+  margin-top:25px;
+}
+
+.actions button{
+  flex:1;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,#7c3aed,#6366f1);
+  color:white;
+  cursor:pointer;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.actions button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(124,58,237,0.4);
+}
+
+/* 🔥 POPUP */
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.75);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+
+.popup-card{
+  background:#0f172a;
+  padding:28px;
+  border-radius:18px;
+  text-align:center;
+  width:300px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.5);
+  animation:pop 0.35s ease;
+}
+
+.popup-card h2{
+  color:#22c55e;
+  margin-bottom:10px;
+}
+
+.popup-card h3{
+  margin-top:12px;
+  color:#facc15;
+}
+
+/* POP ANIMATION */
+@keyframes pop{
+  from{transform:scale(0.5);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.hide{
+  display:none;
+}
+
+/* 🔥 PROFILE */
+.profile-wrapper{
+  position:relative;
+}
+
+.profile-btn{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#7c3aed,#6366f1);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.profile-btn:hover{
+  transform:scale(1.05);
+}
+
+/* 🔽 DROPDOWN */
+.dropdown-menu{
+  position:absolute;
+  top:55px;
+  right:0;
+  width:230px;
+  background:#0f172a;
+  border-radius:14px;
+  padding:14px;
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.6);
+  animation:fadeIn 0.2s ease;
+}
+
+.dropdown-menu.active{
+  display:flex;
+}
+
+/* USER */
+.user-info{
+  padding:8px;
+}
+
+.user-info h4{
+  margin:0;
+  font-size:15px;
+}
+
+.user-info p{
+  margin:2px 0 0;
+  font-size:12px;
+  opacity:0.7;
+}
+
+/* MENU ITEMS */
+.dropdown-menu p{
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.dropdown-menu p:hover{
+  background:#1e293b;
+  transform:translateX(3px);
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(-5px);}
+  to{opacity:1;transform:translateY(0);}
+}

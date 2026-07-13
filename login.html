@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | ParkIQ</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body>
+
+<div class="auth-container">
+
+  <div class="auth-card">
+
+    <!-- 🔄 TITLE -->
+    <h2 id="title">Login</h2>
+    <p id="subtitle">Login to continue</p>
+
+    <!-- ===================== -->
+    <!-- 🔐 LOGIN FORM -->
+    <!-- ===================== -->
+    <form id="loginForm">
+
+      <input 
+        type="email" 
+        id="loginEmail" 
+        placeholder="Email" 
+        required
+      >
+
+      <input 
+        type="password" 
+        id="loginPassword" 
+        placeholder="Password" 
+        required
+      >
+
+      <button type="submit" class="auth-btn">
+        Login
+      </button>
+
+    </form>
+
+
+    <!-- ===================== -->
+    <!-- 🆕 SIGNUP FORM -->
+    <!-- ===================== -->
+    <form id="signupForm" style="display:none;">
+
+      <div class="row">
+        <input type="text" id="firstName" placeholder="First Name" required>
+        <input type="text" id="lastName" placeholder="Last Name" required>
+      </div>
+
+      <input type="email" id="email" placeholder="Email" required>
+
+      <input type="password" id="password" placeholder="Password" required>
+
+      <button type="submit" class="auth-btn">
+        Create Account
+      </button>
+
+    </form>
+
+
+    <!-- ===================== -->
+    <!-- 🔄 TOGGLE -->
+    <!-- ===================== -->
+    <p style="text-align:center;margin-top:15px;">
+      <span id="toggleText">Don't have an account?</span>
+      <a href="javascript:void(0)" id="toggleLink">Sign Up</a>
+    </p>
+
+  </div>
+
+</div>
+
+<!-- JS -->
+<script type="module" src="js/auth.js"></script>
+
+</body>
+</html>

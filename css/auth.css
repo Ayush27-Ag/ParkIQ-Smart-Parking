@@ -1,0 +1,71 @@
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background:#020617;
+  color:white;
+}
+
+/* CENTER */
+.auth-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+/* CARD */
+.auth-card{
+  background:#0f172a;
+  padding:30px;
+  border-radius:16px;
+  width:320px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* TITLE */
+.auth-card h2{
+  margin-bottom:5px;
+}
+
+.auth-card p{
+  opacity:0.7;
+  margin-bottom:20px;
+}
+
+/* INPUTS */
+input{
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border:none;
+  border-radius:8px;
+  background:#1e293b;
+  color:white;
+}
+
+/* TWO INPUT ROW */
+.row{
+  display:flex;
+  gap:10px;
+}
+
+.row input{
+  flex:1;
+}
+
+/* BUTTON */
+.auth-btn{
+  width:100%;
+  padding:12px;
+  margin-top:5px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(135deg,#7c3aed,#6366f1);
+  color:white;
+  cursor:pointer;
+  font-weight:500;
+}
+
+.auth-btn:hover{
+  opacity:0.9;
+}

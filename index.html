@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ParkIQ - Smart Parking</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- 🔥 NAVBAR -->
+<header class="navbar">
+  <h2>ParkIQ</h2>
+
+  <div>
+    <button class="btn-outline" onclick="goLogin()">Login</button>
+  </div>
+</header>
+
+<!-- 🔥 HERO -->
+<section class="hero">
+
+  <h1>Smart Parking, Simplified 🚗</h1>
+
+  <p>
+    Find nearby parking, book instantly, and never lose your car again.
+  </p>
+
+  <div class="hero-btns">
+    <button onclick="goDashboard()">Get Started</button>
+    <button class="btn-outline" onclick="goLogin()">Login</button>
+  </div>
+
+</section>
+
+<!-- 🔥 FEATURES -->
+<section class="features">
+
+  <div class="feature-card">
+    <h3>🔐 Secure Login</h3>
+    <p>Powered by Firebase authentication</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>📍 Live Location</h3>
+    <p>Find parking near you in real-time</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>⚡ Instant Booking</h3>
+    <p>Reserve slots in seconds</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>💳 Easy Payment</h3>
+    <p>UPI, Razorpay integrated</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>🎫 Token System</h3>
+    <p>Unique booking token for entry</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>🚗 Find My Car</h3>
+    <p>Navigate back to your parking spot</p>
+  </div>
+
+</section>
+
+<!-- 🔥 CTA -->
+<section class="cta">
+  <h2>Ready to Park Smarter?</h2>
+  <button onclick="goDashboard()">Start Booking 🚀</button>
+</section>
+
+<script>
+function goLogin(){
+  window.location.href = "login.html";
+}
+
+function goDashboard(){
+  const user = localStorage.getItem("user");
+
+  if(user){
+    window.location.href = "dashboard.html";
+  } else {
+    window.location.href = "login.html";
+  }
+}
+</script>
+
+</body>
+</html>

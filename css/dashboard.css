@@ -1,0 +1,105 @@
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background:#020617;
+  color:white;
+}
+
+/* HEADER */
+.header{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 20px;
+  background:#0f172a;
+}
+
+/* SEARCH */
+#searchBox{
+  position:absolute;
+  top:80px;
+  left:20px;
+  width:280px;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  z-index:10;
+}
+
+/* LAYOUT */
+.container{
+  display:flex;
+  height:100vh;
+}
+
+#map{
+  flex:2;
+}
+
+/* SIDEBAR */
+.sidebar{
+  flex:1;
+  background:#0f172a;
+  padding:20px;
+  overflow:auto;
+}
+
+/* FORM */
+#bookingForm input{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:8px;
+  border:none;
+}
+
+.time-row{
+  display:flex;
+  gap:10px;
+}
+
+#confirmBookingBtn{
+  width:100%;
+  padding:12px;
+  background:#7c3aed;
+  border:none;
+  color:white;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.hidden{
+  display:none;
+}
+
+/* PROFILE */
+.profile-wrapper{
+  position:relative;
+}
+
+.profile-btn{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#7c3aed;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:50px;
+  right:0;
+  background:#0f172a;
+  padding:10px;
+  display:none;
+}
+
+.dropdown-menu.active{
+  display:block;
+}
+#map {
+  height: 100vh;
+  width: 100%;
+}
