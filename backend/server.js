@@ -89,11 +89,12 @@ async function requireAuth(req, res, next) {
 async function calculateTrustedPrice(parkingId, start, end) {
   const slotSnap = await db.collection("parkingSlots").doc(parkingId).get();
 
-  if (!slotSnap.exists) {
-    throw new Error("Parking location not found");
-  }
+  // Same fallback as the frontend: any city without its own Firestore
+  // document still works, using sensible defaults.
+  const slot = slotSnap.exists
+    ? slotSnap.data()
+    : { availableSlots: 15, totalSlots: 15, pricePerHour: 20 };
 
-  const slot = slotSnap.data();
   const pricePerHour = slot.pricePerHour || 20;
 
   const hours =
@@ -220,12 +221,24 @@ app.post("/api/verify-payment", requireAuth, async (req, res) => {
     const bookingRef = await db.collection("bookings").add(bookingData);
 
     // Slot is only decremented after payment is confirmed — not before.
-    await db
-      .collection("parkingSlots")
-      .doc(parkingId)
-      .update({
+    // Using set(..., { merge: true }) instead of update() so this also
+    // works the very first time a city is booked (no document yet).
+    const slotRef = db.collection("parkingSlots").doc(parkingId);
+    const slotSnap = await slotRef.get();
+
+    if (slotSnap.exists) {
+      await slotRef.update({
         availableSlots: admin.firestore.FieldValue.increment(-1),
       });
+    } else {
+      // First booking ever for this city — create the doc with defaults
+      // (matching the frontend fallback) minus this one slot.
+      await slotRef.set({
+        pricePerHour: 20,
+        totalSlots: 15,
+        availableSlots: 14,
+      });
+    }
 
     res.json({
       success: true,

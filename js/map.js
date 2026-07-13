@@ -105,6 +105,7 @@ function clearMarkers() {
 
 
 // 🔥 LOAD PARKING
+// 🔥 LOAD PARKING
 async function loadParkingDetails(place) {
 
   try {
@@ -126,15 +127,14 @@ async function loadParkingDetails(place) {
 
     const snap = await getDoc(doc(db, "parkingSlots", docId));
 
-    if (!snap.exists()) {
-      document.getElementById("parkingDetails").innerHTML = `
-        <h3>${place.name}</h3>
-        <p>No slot data ❌</p>
-      `;
-      return;
-    }
-
-    const data = snap.data();
+    // 🔥 If this city doesn't have a specific Firestore document yet,
+    // fall back to sensible defaults instead of blocking the booking.
+    // This means the app works for ANY city in India out of the box —
+    // you only need to add a real document for a city when you want to
+    // override its price or track real slot availability for it.
+    const data = snap.exists()
+      ? snap.data()
+      : { availableSlots: 15, totalSlots: 15, pricePerHour: 20 };
 
     selectedParking = {
       id: docId,
