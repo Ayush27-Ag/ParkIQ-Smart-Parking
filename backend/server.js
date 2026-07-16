@@ -141,8 +141,11 @@ app.post("/api/create-order", requireAuth, async (req, res) => {
       keyId: process.env.RAZORPAY_KEY_ID, // public key, safe to expose
     });
   } catch (err) {
-    console.error("create-order error:", err.message);
-    res.status(500).json({ error: "Could not create order" });
+    console.error("create-order error:", err?.message || err);
+    console.error("create-order error (full):", JSON.stringify(err, Object.getOwnPropertyNames(err)));
+    res.status(500).json({
+      error: err?.error?.description || err?.message || "Could not create order",
+    });
   }
 });
 
