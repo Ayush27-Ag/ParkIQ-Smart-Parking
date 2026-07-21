@@ -2,77 +2,150 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ParkIQ - Smart Parking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ParkIQ — Real-time parking, verified end to end</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<!-- 🔥 NAVBAR -->
-<header class="navbar">
-  <h2>ParkIQ</h2>
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">ParkIQ</a>
 
-  <div>
-    <button class="btn-outline" onclick="goLogin()">Login</button>
+    <nav class="nav-links">
+      <a href="#how-it-works">How it works</a>
+      <a href="#features">Why ParkIQ</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="btn btn-ghost" onclick="goLogin()">Log in</button>
+      <button class="btn btn-primary" onclick="goDashboard()">Get started</button>
+    </div>
   </div>
 </header>
 
-<!-- 🔥 HERO -->
+<!-- HERO -->
 <section class="hero">
+  <div class="hero-inner">
 
-  <h1>Smart Parking, Simplified 🚗</h1>
+    <div class="hero-copy">
+      <p class="eyebrow">Real-time parking, verified end to end</p>
+      <h1>Stop circling the block.<br>Park in one tap.</h1>
+      <p class="hero-sub">
+        ParkIQ shows live slot availability nearby, holds nothing until your
+        payment clears, and hands you a token your gate can check.
+      </p>
 
-  <p>
-    Find nearby parking, book instantly, and never lose your car again.
-  </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary btn-lg" onclick="goDashboard()">Find parking near me</button>
+        <button class="btn btn-ghost btn-lg" onclick="goLogin()">Log in</button>
+      </div>
 
-  <div class="hero-btns">
-    <button onclick="goDashboard()">Get Started</button>
-    <button class="btn-outline" onclick="goLogin()">Login</button>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">payments verified server-side</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">Any</span>
+          <span class="stat-label">city in India, day one</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">0</span>
+          <span class="stat-label">slots held before you pay</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="grid-panel">
+        <div class="grid-panel-head">
+          <span class="live-dot"></span> Live availability
+        </div>
+
+        <div class="slot-grid" id="slotGrid"></div>
+
+        <div class="grid-legend">
+          <span><i class="sw sw-open"></i> Open</span>
+          <span><i class="sw sw-full"></i> Full</span>
+        </div>
+      </div>
+    </div>
+
   </div>
-
 </section>
 
-<!-- 🔥 FEATURES -->
-<section class="features">
+<!-- HOW IT WORKS -->
+<section class="how" id="how-it-works">
+  <p class="section-eyebrow">The flow</p>
+  <h2>From search to gate, four steps.</h2>
 
-  <div class="feature-card">
-    <h3>🔐 Secure Login</h3>
-    <p>Powered by Firebase authentication</p>
-  </div>
-
-  <div class="feature-card">
-    <h3>📍 Live Location</h3>
-    <p>Find parking near you in real-time</p>
-  </div>
-
-  <div class="feature-card">
-    <h3>⚡ Instant Booking</h3>
-    <p>Reserve slots in seconds</p>
-  </div>
-
-  <div class="feature-card">
-    <h3>💳 Easy Payment</h3>
-    <p>UPI, Razorpay integrated</p>
-  </div>
-
-  <div class="feature-card">
-    <h3>🎫 Token System</h3>
-    <p>Unique booking token for entry</p>
-  </div>
-
-  <div class="feature-card">
-    <h3>🚗 Find My Car</h3>
-    <p>Navigate back to your parking spot</p>
-  </div>
-
+  <ol class="steps">
+    <li>
+      <span class="step-num">01</span>
+      <h3>Search</h3>
+      <p>Drop a pin or search any city and see live slot counts before you drive over.</p>
+    </li>
+    <li>
+      <span class="step-num">02</span>
+      <h3>Reserve</h3>
+      <p>Pick a time window and lock in the rate. Nothing leaves availability until payment clears.</p>
+    </li>
+    <li>
+      <span class="step-num">03</span>
+      <h3>Pay</h3>
+      <p>Checkout runs through Razorpay and every amount is re-verified on our server, not your browser.</p>
+    </li>
+    <li>
+      <span class="step-num">04</span>
+      <h3>Park</h3>
+      <p>Get a token at the gate, and pull up directions back to your car whenever you're ready to leave.</p>
+    </li>
+  </ol>
 </section>
 
-<!-- 🔥 CTA -->
+<!-- FEATURES -->
+<section class="features" id="features">
+  <p class="section-eyebrow">Why ParkIQ</p>
+  <h2>Built like infrastructure, not a weekend demo.</h2>
+
+  <div class="feature-grid">
+    <div class="feature">
+      <h3>Firebase-secured accounts</h3>
+      <p>Every session is authenticated and every booking is scoped to its owner — no one can read or edit a reservation that isn't theirs.</p>
+    </div>
+    <div class="feature">
+      <h3>Payments verified server-side</h3>
+      <p>Order amounts are recalculated on the backend and Razorpay signatures are checked before a single slot is marked booked.</p>
+    </div>
+    <div class="feature">
+      <h3>Works nationwide from day one</h3>
+      <p>New cities get sensible default pricing automatically — no manual setup required before someone can book there.</p>
+    </div>
+    <div class="feature">
+      <h3>An admin panel, not a spreadsheet</h3>
+      <p>Add locations, adjust pricing, and watch bookings and revenue roll in from a single dashboard.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
 <section class="cta">
-  <h2>Ready to Park Smarter?</h2>
-  <button onclick="goDashboard()">Start Booking 🚀</button>
+  <h2>Your next parking spot is already live.</h2>
+  <button class="btn btn-primary btn-lg" onclick="goDashboard()">Get started — it's free</button>
 </section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span class="logo">ParkIQ</span>
+  <span class="footer-note">Built for real-time, real-money parking bookings.</span>
+</footer>
 
 <script>
 function goLogin(){
@@ -88,6 +161,29 @@ function goDashboard(){
     window.location.href = "login.html";
   }
 }
+
+// Signature hero element: a live-looking availability grid.
+// Mostly open (green) with a handful full (red), and two tiles
+// gently pulse to read as "live" without being distracting.
+(function renderSlotGrid(){
+  const grid = document.getElementById("slotGrid");
+  const TOTAL = 48;
+  const pulseIndexes = new Set();
+
+  while (pulseIndexes.size < 2) {
+    pulseIndexes.add(Math.floor(Math.random() * TOTAL));
+  }
+
+  for (let i = 0; i < TOTAL; i++) {
+    const cell = document.createElement("div");
+    const isFull = Math.random() < 0.22;
+    cell.className = "slot-cell" + (isFull ? " is-full" : " is-open");
+    if (pulseIndexes.has(i) && !isFull) {
+      cell.classList.add("is-pulse");
+    }
+    grid.appendChild(cell);
+  }
+})();
 </script>
 
 </body>
