@@ -1,0 +1,114 @@
+.stats-row{
+  display:flex;
+  gap:15px;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+}
+
+.stat-card{
+  flex:1;
+  min-width:150px;
+  background:linear-gradient(145deg,#1e293b,#0f172a);
+  padding:18px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+.stat-label{
+  font-size:13px;
+  color:#94a3b8;
+  margin:0 0 6px 0;
+}
+
+.stat-value{
+  font-size:24px;
+  font-weight:bold;
+  color:#7c3aed;
+  margin:0;
+}
+
+.admin-card{
+  background:linear-gradient(145deg,#1e293b,#0f172a);
+  padding:20px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.05);
+  margin-bottom:20px;
+}
+
+.admin-card h3{
+  margin-top:0;
+  margin-bottom:15px;
+}
+
+.admin-card label{
+  display:block;
+  font-size:13px;
+  color:#94a3b8;
+  margin-top:12px;
+  margin-bottom:6px;
+}
+
+.admin-card input{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:#020617;
+  color:white;
+  box-sizing:border-box;
+}
+
+.admin-card button{
+  margin-top:15px;
+  padding:12px 20px;
+  border:none;
+  border-radius:10px;
+  background:#7c3aed;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.admin-card button:hover{
+  background:#6d28d9;
+}
+
+#locStatus{
+  margin-top:10px;
+  font-size:13px;
+}
+
+.location-row, .booking-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.location-row:last-child, .booking-row:last-child{
+  border-bottom:none;
+}
+
+.location-row .info, .booking-row .info{
+  font-size:14px;
+  line-height:1.6;
+}
+
+.location-row button{
+  background:#ef4444;
+  border:none;
+  color:white;
+  padding:6px 12px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.location-row button:hover{
+  background:#dc2626;
+}
+
+#accessDenied{
+  text-align:center;
+  padding:60px 20px;
+}

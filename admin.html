@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | ParkIQ</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/bookings.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+<header class="header">
+  <h2>ParkIQ <span style="color:#7c3aed;font-size:14px;">ADMIN</span></h2>
+
+  <div class="profile-wrapper">
+    <div class="profile-btn" id="profileBtn">A</div>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+      <div class="user-info">
+        <h4 id="menuName">Admin</h4>
+        <p id="menuEmail">email</p>
+      </div>
+      <hr>
+      <p onclick="window.location.href='dashboard.html'">🏠 User Dashboard</p>
+      <p onclick="logout()">🚪 Logout</p>
+    </div>
+  </div>
+</header>
+
+<div class="main-container">
+
+  <div id="accessDenied" style="display:none;">
+    <h2>⛔ Access Denied</h2>
+    <p>You don't have admin access to this page.</p>
+  </div>
+
+  <div id="adminContent" style="display:none;">
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <p class="stat-label">Total Bookings</p>
+        <p class="stat-value" id="statBookings">-</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Total Revenue</p>
+        <p class="stat-value" id="statRevenue">-</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Parking Locations</p>
+        <p class="stat-value" id="statLocations">-</p>
+      </div>
+    </div>
+
+    <!-- ADD / EDIT LOCATION -->
+    <div class="admin-card">
+      <h3>➕ Add / Update Parking Location</h3>
+
+      <label>City / Location ID (lowercase, e.g. "delhi")</label>
+      <input id="locCity" placeholder="delhi">
+
+      <label>Display Name</label>
+      <input id="locName" placeholder="Connaught Place Parking">
+
+      <label>Price per hour (₹)</label>
+      <input id="locPrice" type="number" placeholder="20">
+
+      <label>Total Slots</label>
+      <input id="locTotal" type="number" placeholder="15">
+
+      <label>Available Slots</label>
+      <input id="locAvailable" type="number" placeholder="15">
+
+      <button onclick="saveLocation()">Save Location</button>
+      <p id="locStatus"></p>
+    </div>
+
+    <!-- LOCATIONS LIST -->
+    <div class="admin-card">
+      <h3>📍 Parking Locations</h3>
+      <div id="locationsList">Loading...</div>
+    </div>
+
+    <!-- BOOKINGS LIST -->
+    <div class="admin-card">
+      <h3>📋 Recent Bookings</h3>
+      <div id="bookingsList">Loading...</div>
+    </div>
+
+  </div>
+
+</div>
+
+<script type="module" src="js/admin.js"></script>
+
+</body>
+</html>

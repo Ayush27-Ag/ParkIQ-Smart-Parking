@@ -256,6 +256,93 @@ app.post("/api/verify-payment", requireAuth, async (req, res) => {
 });
 
 // ==============================
+// 🔐 ADMIN MIDDLEWARE — requires a valid token AND the admin custom claim
+// ==============================
+async function requireAdmin(req, res, next) {
+  if (!req.user?.admin) {
+    return res.status(403).json({ error: "Admin access required" });
+  }
+  next();
+}
+
+// ==============================
+// 👑 ADMIN — list all bookings
+// ==============================
+app.get("/api/admin/bookings", requireAuth, requireAdmin, async (req, res) => {
+  try {
+    const snapshot = await db
+      .collection("bookings")
+      .orderBy("createdAt", "desc")
+      .limit(200)
+      .get();
+
+    const bookings = snapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
+    res.json({ bookings });
+  } catch (err) {
+    console.error("admin/bookings error:", err.message);
+    res.status(500).json({ error: "Could not load bookings" });
+  }
+});
+
+// ==============================
+// 👑 ADMIN — list all parking locations
+// ==============================
+app.get("/api/admin/parking-slots", requireAuth, requireAdmin, async (req, res) => {
+  try {
+    const snapshot = await db.collection("parkingSlots").get();
+    const slots = snapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
+    res.json({ slots });
+  } catch (err) {
+    console.error("admin/parking-slots GET error:", err.message);
+    res.status(500).json({ error: "Could not load parking slots" });
+  }
+});
+
+// ==============================
+// 👑 ADMIN — create or update a parking location
+// docId format: "<city>_parking" (lowercase), e.g. "delhi_parking"
+// ==============================
+app.post("/api/admin/parking-slots", requireAuth, requireAdmin, async (req, res) => {
+  try {
+    const { docId, displayName, pricePerHour, totalSlots, availableSlots } = req.body;
+
+    if (!docId || !/^[a-z0-9_]+$/.test(docId)) {
+      return res.status(400).json({
+        error: "docId is required and must be lowercase letters/numbers/underscores only",
+      });
+    }
+
+    await db.collection("parkingSlots").doc(docId).set(
+      {
+        displayName: displayName || docId,
+        pricePerHour: Number(pricePerHour) || 20,
+        totalSlots: Number(totalSlots) || 15,
+        availableSlots: Number(availableSlots) || Number(totalSlots) || 15,
+      },
+      { merge: true }
+    );
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error("admin/parking-slots POST error:", err.message);
+    res.status(500).json({ error: "Could not save parking slot" });
+  }
+});
+
+// ==============================
+// 👑 ADMIN — delete a parking location
+// ==============================
+app.delete("/api/admin/parking-slots/:docId", requireAuth, requireAdmin, async (req, res) => {
+  try {
+    await db.collection("parkingSlots").doc(req.params.docId).delete();
+    res.json({ success: true });
+  } catch (err) {
+    console.error("admin/parking-slots DELETE error:", err.message);
+    res.status(500).json({ error: "Could not delete parking slot" });
+  }
+});
+
+// ==============================
 // HEALTH CHECK
 // ==============================
 app.get("/", (req, res) => {
