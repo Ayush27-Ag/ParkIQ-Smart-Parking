@@ -131,7 +131,7 @@ app.post("/api/create-order", requireAuth, async (req, res) => {
     const order = await razorpay.orders.create({
       amount: price * 100, // paise
       currency: "INR",
-      receipt: `parkiq_${req.user.uid}_${Date.now()}`,
+      receipt: `pk_${req.user.uid.slice(0, 10)}_${Date.now()}`,
     });
 
     res.json({
