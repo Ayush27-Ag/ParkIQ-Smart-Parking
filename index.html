@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ParkIQ — Real-time parking, verified end to end</title>
+  <title>ParkIQ — Find and book parking anywhere in India</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -16,11 +18,15 @@
 <!-- NAV -->
 <header class="nav">
   <div class="nav-inner">
-    <a class="logo" href="index.html">ParkIQ</a>
+    <a class="logo-mark" href="index.html">
+      <img src="assets/icons/logo.svg" alt="" width="30" height="30">
+      <span class="logo">ParkIQ</span>
+    </a>
 
     <nav class="nav-links">
       <a href="#how-it-works">How it works</a>
       <a href="#features">Why ParkIQ</a>
+      <a href="#cities">Cities</a>
     </nav>
 
     <div class="nav-actions">
@@ -36,16 +42,21 @@
 
     <div class="hero-copy">
       <p class="eyebrow">Real-time parking, verified end to end</p>
-      <h1>Stop circling the block.<br>Park in one tap.</h1>
+      <h1>Parking, sorted<br>before you drive.</h1>
       <p class="hero-sub">
-        ParkIQ shows live slot availability nearby, holds nothing until your
-        payment clears, and hands you a token your gate can check.
+        Search any city in India, see live slot counts, and pay only when
+        you're ready. The price you see is the price you're charged.
       </p>
 
-      <div class="hero-actions">
-        <button class="btn btn-primary btn-lg" onclick="goDashboard()">Find parking near me</button>
-        <button class="btn btn-ghost btn-lg" onclick="goLogin()">Log in</button>
-      </div>
+      <form class="hero-search" onsubmit="searchFromHero(event)">
+        <input
+          type="text"
+          id="heroCity"
+          placeholder="Search a city — e.g. Aligarh, Delhi, Pune"
+          autocomplete="off"
+          required>
+        <button type="submit" class="btn btn-primary">Find parking</button>
+      </form>
 
       <div class="hero-stats">
         <div class="stat">
@@ -83,31 +94,38 @@
 
 <!-- HOW IT WORKS -->
 <section class="how" id="how-it-works">
-  <p class="section-eyebrow">The flow</p>
-  <h2>From search to gate, four steps.</h2>
+  <p class="section-eyebrow">How it works</p>
+  <h2>Search. Reserve. Park.</h2>
+  <p class="section-sub">Three steps, no circling the block.</p>
 
-  <ol class="steps">
-    <li>
-      <span class="step-num">01</span>
-      <h3>Search</h3>
-      <p>Drop a pin or search any city and see live slot counts before you drive over.</p>
-    </li>
-    <li>
-      <span class="step-num">02</span>
-      <h3>Reserve</h3>
-      <p>Pick a time window and lock in the rate. Nothing leaves availability until payment clears.</p>
-    </li>
-    <li>
-      <span class="step-num">03</span>
-      <h3>Pay</h3>
-      <p>Checkout runs through Razorpay and every amount is re-verified on our server, not your browser.</p>
-    </li>
-    <li>
-      <span class="step-num">04</span>
-      <h3>Park</h3>
-      <p>Get a token at the gate, and pull up directions back to your car whenever you're ready to leave.</p>
-    </li>
-  </ol>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="how-icon">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <span class="how-num">01</span>
+      <h3>Discover</h3>
+      <p>Search any city and compare real-time availability and pricing before you leave home.</p>
+    </div>
+
+    <div class="how-step">
+      <div class="how-icon">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M4 10h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 14l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="how-num">02</span>
+      <h3>Reserve &amp; pay</h3>
+      <p>Lock your slot with Razorpay checkout — the amount is re-verified on our server, not your browser.</p>
+    </div>
+
+    <div class="how-step">
+      <div class="how-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 12l2-6h14l2 6M5 12v6a1 1 0 001 1h1a1 1 0 001-1v-1h8v1a1 1 0 001 1h1a1 1 0 001-1v-6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="7.5" cy="15" r="1" fill="currentColor"/><circle cx="16.5" cy="15" r="1" fill="currentColor"/></svg>
+      </div>
+      <span class="how-num">03</span>
+      <h3>Drive &amp; park</h3>
+      <p>Show your token at the gate. When you're done, find-my-car routes you straight back.</p>
+    </div>
+  </div>
 </section>
 
 <!-- FEATURES -->
@@ -135,6 +153,31 @@
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <p class="section-eyebrow">People using ParkIQ</p>
+  <h2>No more circling the block.</h2>
+
+  <div class="testimonial-grid">
+    <div class="testimonial">
+      <p>“I booked a spot near Connaught Place before I even left home. Walked straight in — no arguing with the guard about availability.”</p>
+      <span>Priya S. — Delhi</span>
+    </div>
+    <div class="testimonial">
+      <p>“The price on the app was the exact price I paid. No 'cash only' surprise at the gate for once.”</p>
+      <span>Rohit M. — Pune</span>
+    </div>
+    <div class="testimonial">
+      <p>“Found parking in Aligarh in under a minute, which I genuinely didn't expect an app to handle for a smaller city.”</p>
+      <span>Ayush A. — Aligarh</span>
+    </div>
+    <div class="testimonial">
+      <p>“Find My Car alone is worth it — I always forget which level I parked on at the mall.”</p>
+      <span>Sneha K. — Bengaluru</span>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta">
   <h2>Your next parking spot is already live.</h2>
@@ -143,8 +186,30 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <span class="logo">ParkIQ</span>
-  <span class="footer-note">Built for real-time, real-money parking bookings.</span>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo">ParkIQ</span>
+      <p class="footer-note">Built for real-time, real-money parking bookings across India.</p>
+    </div>
+
+    <div class="footer-cities" id="cities">
+      <p class="footer-heading">Find parking in</p>
+      <div class="city-links">
+        <a href="#" onclick="searchCity('delhi');return false;">Delhi</a>
+        <a href="#" onclick="searchCity('mumbai');return false;">Mumbai</a>
+        <a href="#" onclick="searchCity('bengaluru');return false;">Bengaluru</a>
+        <a href="#" onclick="searchCity('pune');return false;">Pune</a>
+        <a href="#" onclick="searchCity('hyderabad');return false;">Hyderabad</a>
+        <a href="#" onclick="searchCity('chennai');return false;">Chennai</a>
+        <a href="#" onclick="searchCity('kolkata');return false;">Kolkata</a>
+        <a href="#" onclick="searchCity('aligarh');return false;">Aligarh</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 ParkIQ. All rights reserved.</span>
+  </div>
 </footer>
 
 <script>
@@ -160,6 +225,18 @@ function goDashboard(){
   } else {
     window.location.href = "login.html";
   }
+}
+
+function searchCity(city){
+  localStorage.setItem("selectedCity", city.toLowerCase().trim());
+  goDashboard();
+}
+
+function searchFromHero(e){
+  e.preventDefault();
+  const city = document.getElementById("heroCity").value;
+  if (!city.trim()) return;
+  searchCity(city);
 }
 
 // Signature hero element: a live-looking availability grid.
